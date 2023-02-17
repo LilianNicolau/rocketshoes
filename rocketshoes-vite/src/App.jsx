@@ -1,11 +1,13 @@
-import Body from "./components/body/body";
-import Header from "./components/header/Header";
+import Router from "./router/Router";
+import { GlobalStyle } from "./css/global";
+import GlobalState from "./globalState/GlobalState";
+
 
 export default function App() {
     return (
-    <>
-    <Header/>
-    <Body/>
-    </>
+        <GlobalState>
+            <Router/>
+            <GlobalStyle/>
+        </GlobalState>
     );
     }
