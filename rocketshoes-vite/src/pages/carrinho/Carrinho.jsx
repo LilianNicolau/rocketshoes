@@ -50,21 +50,19 @@ export default function Carrinho() {
             produto={item}
         />
     })
+
+    const path = window.location.pathname
     
     return (
         <>
-            <Header/>
-            <Container>
+            <Header path={path}/>
+            <Container adicionarAoCarrinho = {adicionarAoCarrinho}>
                 <section>
                     <Produto>PRODUTO</Produto>
                     <Qtd>QTD</Qtd>
                     <Preco>PREÇO</Preco>
                 </section> 
-
-               
                     {mostrarProdutosDoCarrinho}
-              
-                
                 <RodapeCarrinho>
                     <Button variant="primary" >
                         <span>FINALIZAR PEDIDO</span>

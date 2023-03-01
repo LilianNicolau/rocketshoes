@@ -22,6 +22,44 @@ export const NomeLoja = styled.h1`
         filter: brightness(0.9)
     }
 `
+
+export const Buscar = styled.div`
+    input {
+        background: #FFFFFF;
+        border-radius: 5px;
+        padding: 0 24px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-size: 14px;
+        border: none;
+        height: 40px;
+        width: 300px;
+    }
+`
+
+export const Select = styled.select`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 14px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding: 0 24px;
+    border: none;
+    height: 40px;
+    width: 150px;
+`
+
+
+export const Option = styled.option`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0 24px;
+    border: none;
+    background: #FFFFFF;
+`
+
 export const Nav = styled.nav`
    display: flex;
    svg {
