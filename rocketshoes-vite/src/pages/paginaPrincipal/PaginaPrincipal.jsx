@@ -2,46 +2,59 @@ import { useContext, useState } from 'react';
 import CardProdutos from '../../components/cardProduto/CardProdutos';
 import Header from '../../components/header/Header';
 import listaProdutos from '../../shoes.json';
-import { Container } from './style'
+import { Container, Buscar } from './style'
 import { GlobalContext } from '../../globalState/globalContext';
 
 export default function PaginaPrincipal() {
    
-const context = useContext(GlobalContext)
-const {adicionarAoCarrinho} = context
+    const context = useContext(GlobalContext)
+    const {adicionarAoCarrinho} = context
 
-const [listaDeProdutos, setListaDeProdutos] = useState(listaProdutos)
+    const [listaDeProdutos, setListaDeProdutos] = useState(listaProdutos)
 
-const handleAdicionarProdutos =(event) => {
-    setListaDeProdutos([...listaDeProdutos,
-        {
-            "id": "7",
-            "nome": "Tênis masculino",
-            "imagem": "https://static.netshoes.com.br/produtos/tenis-mizuno-wave-titan-2/06/2FU-6367-006/2FU-6367-006_zoom2.jpg?ts=1657368380&ims=326x",
-            "descricao": "Tênis infantil",
-            "preco": 359.90,
-            "quantidade": 0
+    const handleAdicionarProdutos =(event) => {
+        setListaDeProdutos([...listaDeProdutos,
+            {
+                "id": "7",
+                "nome": "Tênis masculino",
+                "imagem": "https://static.netshoes.com.br/produtos/tenis-mizuno-wave-titan-2/06/2FU-6367-006/2FU-6367-006_zoom2.jpg?ts=1657368380&ims=326x",
+                "descricao": "Tênis infantil",
+                "preco": 359.90,
+                "quantidade": 0
+            }
+        ])
+    }
+
+    const handleFiltrar = (event) => {
+        if(event.target.value === '') {
+            setListaDeProdutos(listaProdutos)
+            return 
+        } 
+        const listaFiltrada = listaDeProdutos.filter((item) => {
+            return item.descricao.includes(event.target.value) 
+        })
+        setListaDeProdutos(listaFiltrada) 
+    }
+
+    const handleOrganizarPorPreco = (event) => {
+        if(event.target.value === 'menor'){
+            const ordenandoMenorPreco = listaDeProdutos.sort((a,b) => a.preco - b.preco)
+            setListaDeProdutos(ordenandoMenorPreco)
+        } else if(event.target.value === 'maior') {
+            const ordenarMaiorPreco = listaDeProdutos.sort((a,b) => b.preco - a.preco)
+            setListaDeProdutos(ordenarMaiorPreco);
         }
-    ])
-}
-
-const handleFiltrar = (event) => {
-    if(event.target.value === '') {
-        setListaDeProdutos(listaProdutos)
-        return 
-    } 
-    const listaFiltrada = listaDeProdutos.filter((item) => {
-        return item.descricao.includes(event.target.value) 
-    })
-    setListaDeProdutos(listaFiltrada) 
-}
+    }
+    console.log(listaDeProdutos);
 
     return (
     <>
-        <Header/>
-        <button onClick={handleAdicionarProdutos}>Adicionar</button>
+        <Header
+            handleFiltrar = {handleFiltrar}
+            handlePreco = {handleOrganizarPorPreco}
+        /> 
         <div></div>
-        <input type='text' placeholder='Filtrar' onChange={handleFiltrar}/>
+        {/* <button onClick={handleAdicionarProdutos}>Adicionar</button> */}
         <Container>
             {listaDeProdutos.map((item) => {
                 return(
