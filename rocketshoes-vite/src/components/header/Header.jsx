@@ -38,7 +38,7 @@ export default function Header(props) {
                         <NumeroItens>
                             {`${somaItens} itens` }
                         </NumeroItens>
-                    </div>
+                    </div>  
                     <AiOutlineShoppingCart size={30 } color='white'/>
                 </Nav>
             </HeaderContainer>

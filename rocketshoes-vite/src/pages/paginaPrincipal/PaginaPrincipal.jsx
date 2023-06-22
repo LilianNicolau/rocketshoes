@@ -45,7 +45,7 @@ export default function PaginaPrincipal() {
             setListaDeProdutos(ordenarMaiorPreco);
         }
     }
-    console.log(listaDeProdutos);
+    // console.log(listaDeProdutos);
 
     return (
     <>
